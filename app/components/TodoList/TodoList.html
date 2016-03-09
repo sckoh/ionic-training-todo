@@ -1,0 +1,23 @@
+<ion-view view-title="Todo">
+  <ion-nav-buttons side="left">
+    <button translate class="button" ng-click="vm.signOut()">
+      signout
+    </button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <button translate class="button" ng-click="vm.openTodoAddModal()">
+      add
+    </button>
+  </ion-nav-buttons>
+  <ion-content>
+    <ion-list show-delete="false">
+      <ion-item ng-click="vm.openTodoEditModal(todo)" item-height="52px" item-width="100%" collection-repeat="todo in vm.todos | orderBy : '-createdDate'">
+        <list-two-item text1="todo.content" text2="todo.createdDate"></list-two-item>
+        <ion-option-button class="button-assertive" ng-click="vm.deleteTodo(todo)">Delete</ion-option-button>
+      </ion-item>
+    </ion-list>
+    <div class="padding text-center" ng-if="!vm.todos.length">
+      You have no todo :)
+    </div>
+  </ion-content>
+</ion-view>
