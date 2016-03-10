@@ -1,9 +1,18 @@
 export default class RegisterCtrl {
-  constructor(RegisterService) {
+  constructor(RegisterService, $scope) {
     'ngInject';
 
     var vm = this;
     vm.register = register;
+
+    $scope.$on('$ionicView.afterEnter', activate);
+
+    function activate() {
+      if (vm.activated)
+        return;
+
+      vm.activated = true;
+    }
 
     function register(user) {
       RegisterService.register(user)
